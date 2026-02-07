@@ -1,4 +1,4 @@
-package se.kth.dd2480.group15;
+package se.kth.dd2480.group15.api.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.fasterxml.jackson.databind.JsonNode;
 
 @RestController
-public class Controllers {
+public class WebhookController {
     @PostMapping("/")
     public String handleWebhook(@RequestBody JsonNode payload) {
         try {
@@ -17,7 +17,7 @@ public class Controllers {
             System.out.println("Received build request for:");
             System.out.println("Repo: " + repo + " | Branch: " + branch + " | Commit: " + commit);
 
-            return "CI job started for " + commit;
+            return "CI job started for " + commit; // return 200 OK with message
         } catch (Exception e) {
             return "Error processing webhook: " + e.getMessage();
         }
