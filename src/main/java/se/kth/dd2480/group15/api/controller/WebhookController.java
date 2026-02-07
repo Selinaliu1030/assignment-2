@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 @RestController
 public class WebhookController {
-    @PostMapping("/")
+    @PostMapping("/webhook")
     public String handleWebhook(@RequestBody JsonNode payload) {
         try {
             String repo = payload.path("repository").path("name").asText();
